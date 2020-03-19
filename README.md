@@ -1,24 +1,22 @@
-# README
+# ahappy
+## サイト概要
+日常で見つけた小さな発見や幸せに感じたこと、ちょっとだけ頑張ってみたことなどを投稿し、
+他のユーザーの投稿も見る事ができ、お気に入り登録して今度試してみようかなと思えるサイト。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### サイトテーマ
+何気ない日常で見つけた小さな幸せを一緒に共有しましょう。
 
-* Ruby version
+### テーマを選んだ理由
+コロナが流行り予防のため家で過ごす時間が増えたので、出かけたりしなくても家や近所で少しでも幸せな気分になれればと思い作りました。
 
-* System dependencies
+### ターゲットユーザ
+家や庭、近所でいつもと違うことして楽しみたい人
 
-* Configuration
+### 主な利用シーン
+朝、昼、夜や休日、平日の仕事などでちょっと頑張ったこと、発見した物、買った物、作ったもを写真と文章で投稿
 
-* Database creation
+## 設計書
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 機能一覧
+<https://docs.google.com/spreadsheets/d/1pnnhAQ1D0HUTuIwC-hyvRfkqRKDbS339tNB_AB_yasg/edit#gid=0>
