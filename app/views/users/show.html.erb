@@ -1,0 +1,24 @@
+<h1>user show</h1>
+<div class = "row">
+    <% if flash[:notice] %>
+        <%= flash[:notice] %>
+    <% end %>
+    <div class = "col-xs-3" >
+        <table class = "table"> 
+            <tr>
+                <th>image</th>
+                <td><%= attachment_image_tag @user, :profile_image, size: "100x100",format:"jpeg" %></td>
+            </tr>
+            <tr>
+                <th>name</th>
+                <td><%= @user.name %></td>
+            </tr>
+            <tr>
+                <th>introduction</th>
+                <td><%= @user.introduction %></td>
+            </tr>
+                <td><%= link_to 'edit', edit_user_path,  class: "btn btn-default" %></td>
+        </table>
+    </div>
+</div>
+
