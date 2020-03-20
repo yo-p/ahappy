@@ -1,0 +1,23 @@
+<h1>user edit</h1>
+<% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+<% end %>
+<div calss = "row">
+    <div calss = "col-xs-3">
+        <%= form_for @user do |f| %>
+            <table calss = "table">
+                <tr><%= attachment_image_tag @user, :profile_image, size:"100x100", format: "jpeg" %></tr>
+                <tr>
+                    <th><%= f.label :name %></th>
+                    <td><%= f.text_field :name %></td>
+                </tr>
+                <tr>
+                    <th><%= f.label :introduction %></th>
+                    <td><%= f.text_field :introduction %></td>
+                </tr>
+                    <td><%= f.submit %></td>
+            </table>
+        <% end %>
+    </div>
+</div>
+
