@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, length: { maximum: 50 } #自己紹介は50文字以内
+
+  has_many :tweets
 end

@@ -1,0 +1,12 @@
+<h1>new tweet</h1>
+<div class = "row" >
+    <%= form_for (@tweet) do |f| %>
+        <div><%= f.label :image %></div>
+        <div><%= f.attachment_field :image %></div>
+        <div><%= f.label :title %></div>
+        <div><%= f.text_field :title %></div>
+        <div><%= f.label :body %></div>
+        <div><%= f.text_area :body %></div>
+        <div><%= f.submit %></div>
+    <% end %>
+</div>
