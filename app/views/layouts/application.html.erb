@@ -7,10 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= link_to 'logout', destroy_user_session_path, method: :delete %>
-    <%= link_to 'top', root_path %>
-    <%= link_to 'home', user_path(current_user) %>
-    <%= link_to 'newtweet', new_tweet_path %>
+
+    <% if user_signed_in? %>
+      <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+      <%= link_to 'top', root_path %>
+      <%= link_to 'home', user_path(current_user) %>
+      <%= link_to 'newtweet', new_tweet_path %>
+    <% else %>
+      <%= link_to 'top', root_path %>
+      <%= link_to 'sign up', new_user_registration_path %>
+      <%= link_to 'login', new_user_session_path %>
+
+    <% end %>
   </head>
 
   <body>
