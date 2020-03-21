@@ -1,0 +1,14 @@
+<h1>tweet show</h1>
+    <div class = 'row'>
+        <div>
+            <%= attachment_image_tag @tweet, :image, size: "50x50" %>
+            <%= @tweet.user.name %>
+            <%= @tweet.title %>
+            <%= @tweet.body %>
+            <% if @tweet.user_id == current_user.id %>
+                <%= link_to 'Destroy', @tweet, method: :delete, class: "btn-sm btn-danger" %>
+            <% end %>
+        </div>
+    </div>
+
+

@@ -79,3 +79,5 @@ gem 'refile', require: "refile/rails", github: 'manfe/refile'
 #画像のリサイズを整える
 gem 'refile-mini_magick'
 
+
+
