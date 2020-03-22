@@ -28,6 +28,7 @@
                         <th>genre</th>
                         <th>title</th>
                         <th>name</th>
+                        <th>comment</th>
                         <th>favorite</th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                         <td></td>
                         <td><%= link_to tweet.title, tweet %></td>
                         <td><%= tweet.user.name %></td>
+                        <td><%= tweet.comments.count %></td>
                     </tr>
                 <% end %>
                 </tbody>
