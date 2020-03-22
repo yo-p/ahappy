@@ -9,6 +9,33 @@
                 <%= link_to 'Destroy', @tweet, method: :delete, class: "btn-sm btn-danger" %>
             <% end %>
         </div>
+        
+        <%= form_for [@tweet, @comment] do |f| %>
+            <%= f.text_field :content %>
+            <%= f.submit %>
+        <% end %>
+
+        <table class = "table" >
+            <thead>
+                <th>image</th>
+                <th>name</th>
+                <th>comment</th>
+                <th></th>
+            </thead>
+            <% @comments.each do |comment| %>
+            <tbody>
+                <td><%= attachment_image_tag comment.user, :profile_image, size: "50x50" %></td>
+                <td><%= comment.user.name %></td>
+                <td><%= comment.content %></td>
+                <td><% if comment.user_id == current_user.id %>
+                        <%= link_to 'Destroy', tweet_comment_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                    <% end %>
+                </td>
+            </tbody>
+            <% end %>
+
+        </table>
+            
     </div>
 
 
