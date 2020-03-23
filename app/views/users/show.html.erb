@@ -18,7 +18,7 @@
                     <td><%= @user.introduction %></td>
                 </tr>
                 <tr>
-                    <td><%= link_to 'favorites', tweet_favorites_path(@tweets), class: "btn btn-default" %></td>
+                    <td><%= link_to 'favorites', favorites_index_path(@favorites), class: "btn btn-default" %></td>
                 </tr>
                     <td><%= link_to 'edit', edit_user_path,  class: "btn btn-default" %></td>
             </table>
