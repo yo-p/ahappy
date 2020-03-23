@@ -8,6 +8,11 @@
             <% if @tweet.user_id == current_user.id %>
                 <%= link_to 'Destroy', @tweet, method: :delete, class: "btn-sm btn-danger" %>
             <% end %>
+            <% if current_user.already_favorited?(@tweet) %>
+                <%= link_to 'お気に入り解除', tweet_favorite_path(@tweet), method: :delete, class: "btn btn-warning" %>
+            <% else %>
+                <%= link_to 'お気に入り', tweet_favorites_path(@tweet), method: :post, class: "btn btn-primary" %>
+            <% end %>
         </div>
         
         <%= form_for [@tweet, @comment] do |f| %>
@@ -20,6 +25,7 @@
                 <th>image</th>
                 <th>name</th>
                 <th>comment</th>
+                <th></th>
                 <th></th>
             </thead>
             <% @comments.each do |comment| %>

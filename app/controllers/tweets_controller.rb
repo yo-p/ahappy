@@ -22,6 +22,7 @@ class TweetsController < ApplicationController
         @tweet = Tweet.find(params[:id])
         @comments = @tweet.comments
         @comment = Comment.new
+        @favorite = Favorite.new
     end
 
     def destroy

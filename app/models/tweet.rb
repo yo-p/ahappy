@@ -1,11 +1,17 @@
 class Tweet < ApplicationRecord
-    attachment :image #tweetに画像も投稿
+    #tweetの画像も投稿
+    attachment :image 
 
     belongs_to :user 
-    
-    belongs_to :genre, optional: true #開発途中ジャンル空でも投稿可能
+
+    #開発途中ジャンル空でも投稿可能
+    belongs_to :genre, optional: true 
     
     has_many :comments, dependent: :destroy
+
+    #favorite modelを経由してuserテーブルと繋げる
+    has_many :favorites
+    has_many :favarited_users, through: :favorites, source: :user 
 
     validates :title, presence: true
     validates :body, presence: true

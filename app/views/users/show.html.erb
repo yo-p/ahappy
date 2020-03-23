@@ -17,6 +17,9 @@
                     <th>introduction</th>
                     <td><%= @user.introduction %></td>
                 </tr>
+                <tr>
+                    <td><%= link_to 'favorites', tweet_favorites_path(@tweets), class: "btn btn-default" %></td>
+                </tr>
                     <td><%= link_to 'edit', edit_user_path,  class: "btn btn-default" %></td>
             </table>
         </div>
@@ -44,6 +47,7 @@
                         <td><%= link_to tweet.title, tweet %></td>
                         <td><%= tweet.user.name %></td>
                         <td><%= tweet.comments.count %></td>
+                        <td><%= tweet.favorites.count %></td>
                     </tr>
                 <% end %>
                 </tbody>
