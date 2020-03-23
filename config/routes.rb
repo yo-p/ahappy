@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   
   resources :tweets, only: [:new, :create, :show, :destroy] do
-    resources :comments, only: [:create, :destroy]
-    resources :favorites, only: [:index, :create, :destroy]
+    resource :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
+
+  get 'favorites/index'
 
   
   root 'tweets#top'
