@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_050836) do
+ActiveRecord::Schema.define(version: 2020_03_23_104710) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(version: 2020_03_22_050836) do
     t.index ["tweet_id"], name: "index_favorites_on_tweet_id"
     t.index ["user_id", "tweet_id"], name: "index_favorites_on_user_id_and_tweet_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweet_genres", force: :cascade do |t|
+    t.integer "tweet_id"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_tweet_genres_on_genre_id"
+    t.index ["tweet_id"], name: "index_tweet_genres_on_tweet_id"
   end
 
   create_table "tweets", force: :cascade do |t|

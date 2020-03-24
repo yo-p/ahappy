@@ -13,7 +13,11 @@
             <% else %>
                 <%= link_to 'お気に入り', tweet_favorites_path(@tweet), method: :post, class: "btn btn-primary" %>
             <% end %>
-            <p>おきに入り数：<%= @tweet.favorites.count %></p>
+            <p>ジャンル:
+                <% @tweet.genres.each do |genre| %>
+                    <%= genre.type %>
+                <% end %>
+            </p>
         </div>
         
         <%= form_for [@tweet, @comment] do |f| %>
