@@ -12,6 +12,7 @@
       <%= link_to 'logout', destroy_user_session_path, method: :delete %>
       <%= link_to 'top', root_path %>
       <%= link_to 'home', user_path(current_user) %>
+      <%= link_to 'seach', search_tweets_path %>
       <%= link_to 'newtweet', new_tweet_path %>
     <% else %>
       <%= link_to 'top', root_path %>

@@ -3,7 +3,7 @@ class Genre < ApplicationRecord
     has_many :tweet_genres
     has_many :tweets, through: :tweet_genres
 
-    # attr_accessible :data, :type
     self.inheritance_column = :_type_disabled
+
     
 end
