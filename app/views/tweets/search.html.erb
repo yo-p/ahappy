@@ -1,8 +1,38 @@
-<h1>検索画面</h1>
-<%= form_with url: tweets_path, method: :get, local: true do |f| %>
-        <%= f.label :genre %>
+<h1>Tweet Search</h1>
+<!---<%= form_with url: search_tweets_path, method: :get, local: true do |f| %>
         <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :type) do |b| %>
             <%= b.label {b.check_box + b.text} %>
         <% end %>
-    <%= f.submit '検索' %>
-<% end %>
+    <%= f.submit :search %>
+<% end %>--->
+<table class = "table" >
+                <thead>
+                    <tr>
+                        <th>image</th>
+                        <th>genre</th>
+                        <th>title</th>
+                        <th>name</th>
+                        <th>comment</th>
+                        <th>favorite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @tweets.each do |tweet| %>
+                    <tr>
+                        <td>
+                            <%= link_to tweet_path(tweet) do %>
+                                <%= attachment_image_tag tweet, :image, size: "50x50",format:"jpeg" %>
+                            <% end %>
+                        </td>
+                        <td><% tweet.genres.each do |genre| %>
+                                <%= genre.type %>
+                                <br>
+                            <% end %></td>
+                        <td><%= link_to tweet.title, tweet %></td>
+                        <td><%= tweet.user.name %></td>
+                        <td><%= tweet.comments.count %></td>
+                        <td><%= tweet.favorites.count %></td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>

@@ -1,5 +1,8 @@
 class Tweet < ApplicationRecord
-    #tweetの画像も投稿
+    #genre_idを配列で保存
+    # serialize :genre_id
+
+    #tweetの画像も投稿可能
     attachment :image 
 
     belongs_to :user 
@@ -18,18 +21,13 @@ class Tweet < ApplicationRecord
     #tweetは複数のgenreに紐ずくためtweet_genres中間テーブルを作成
     #dependent: :destroyをつける事でtweetに紐ずくtweet_genresも削除
     has_many :tweet_genres, dependent: :destroy
+    # has_many :tweet_genres, dependent: :destroy, foreign_key:"genre_id"
     has_many :genres, through: :tweet_genres
+    # accepts_nested_attributes_for :tweet_genres, allow_destroy: true
 
     validates :title, presence: true
     validates :body, presence: true
     validates :genre_ids, presence: true
 
-    def self.search(search)
-        if search
-            Tweet.where(['genre_id LIKE(?)', "%#{search}"])
-        else
-            Tweet.all
-        end
-    end
-
+    
 end

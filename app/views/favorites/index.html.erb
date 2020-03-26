@@ -4,6 +4,7 @@
         <tr>
             <th>name</th>
             <th>title</th>
+            <th>genres</th>
             <th>image</th>
             <th></th>
         </tr>
@@ -13,6 +14,7 @@
         <tr>
         <td><%= favorite.tweet.user.name %></td>
         <td><%= link_to favorite.tweet.title,(favorite.tweet) %></td>
+        <td></td>
         <td>
         <%= link_to tweet_path(favorite.tweet) do %>
             <%= attachment_image_tag favorite.tweet, :image, size: "50x50", format:"jpeg" %>

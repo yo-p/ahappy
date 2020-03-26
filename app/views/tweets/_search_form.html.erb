@@ -1,0 +1,6 @@
+<%= search_form_for(@q, url: search_tweets_path, method: :get) do |f| %>
+        <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :type) do |b| %>
+            <%= b.label {b.check_box + b.text} %>
+        <% end %>
+    <%= f.submit :search %>
+<% end %>
