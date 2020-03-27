@@ -21,9 +21,7 @@ class Tweet < ApplicationRecord
     #tweetは複数のgenreに紐ずくためtweet_genres中間テーブルを作成
     #dependent: :destroyをつける事でtweetに紐ずくtweet_genresも削除
     has_many :tweet_genres, dependent: :destroy
-    # has_many :tweet_genres, dependent: :destroy, foreign_key:"genre_id"
     has_many :genres, through: :tweet_genres
-    # accepts_nested_attributes_for :tweet_genres, allow_destroy: true
 
     validates :title, presence: true
     validates :body, presence: true

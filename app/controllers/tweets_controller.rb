@@ -3,28 +3,25 @@ class TweetsController < ApplicationController
     def top
     end
 
-    def index
+    def index #tweetの一覧画面
         @tweets = Tweet.all
-        @q = Tweet.ransack(params[:q])
-        @tweets = @q.result
+        # @q = Tweet.ransack(params[:q])
         # @tweets = @q.result(distinct: true)
     end
 
-    def search
-        @q = Tweet.search(search_params)
-        @tweets = @q.result
-        # @tweets = @q.result(destinct: true)
+    def search #検索結果を表示
+        # @q = Tweet.search(search_params)
+        # @tweets = @q.result(distinct: true)
 
     end
 
-    def new
+    def new #tweetの新規投稿画面
         @tweet = Tweet.new
     end
 
     def create
         @tweet = Tweet.new(tweet_params)
         @tweet.user_id = current_user.id
-        binding.pry
         if @tweet.save
             flash[:notice] = "successfully created tweet!"
             redirect_to tweet_path(@tweet)
@@ -33,7 +30,7 @@ class TweetsController < ApplicationController
         end
     end
 
-    def show
+    def show #tweetの詳細画面
         @tweet = Tweet.find(params[:id])
         @comments = @tweet.comments
         @comment = Comment.new
@@ -48,9 +45,10 @@ class TweetsController < ApplicationController
     end
     
 private
-    def search_params
-        params.require(:q).permit({:genre_ids => []})
-    end
+    # def search_params
+    #     params.require(:q).permit({:genre_id_in => []})
+        # params.require(:q).permit({:genre_ids_in => []})
+    # end
 
     def tweet_params 
         params.require(:tweet).permit(:title, :body, :image, {:genre_ids => []})

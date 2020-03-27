@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   end
 
   get 'favorites/index'
-  
   root 'tweets#top'
 
 end
