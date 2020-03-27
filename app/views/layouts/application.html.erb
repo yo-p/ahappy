@@ -7,21 +7,28 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <% if user_signed_in? %>
-      <%= link_to 'logout', destroy_user_session_path, method: :delete %>
-      <%= link_to 'top', root_path %>
-      <%= link_to 'home', user_path(current_user) %>
-      <%= link_to 'newtweet', new_tweet_path %>
-    <% else %>
-      <%= link_to 'top', root_path %>
-      <%= link_to 'sign up', new_user_registration_path %>
-      <%= link_to 'login', new_user_session_path %>
-
-    <% end %>
   </head>
 
   <body>
+    <header>
+      <div class = "container">
+        <div class = "row">
+          <% if user_signed_in? %>
+            <div class = "col-xs-3 col-xs-offset-5"><%= link_to 'A!!happy', root_path %></div>
+            <div class = "col-xs-1"><%= link_to 'home', user_path(current_user) %></div>
+            <div class = "col-xs-1"><%= link_to 'index', tweets_path %></div>
+            <div class = "col-xs-1"><%= link_to 'newtweet', new_tweet_path %></div>
+            <div class = "col-xs-1"><%= link_to 'logout', destroy_user_session_path, method: :delete %></div>
+          <% else %>
+            <div class = "col-xs-3 col-xs-offset-5"><%= link_to 'A!!happy', root_path %></div>
+            <div class = "col-xs-1" ><%= link_to 'about' %></div>
+            <div class = "col-xs-1" ><%= link_to 'sign up', new_user_registration_path %></div>
+            <div class = "col-xs-1" ><%= link_to 'login', new_user_session_path %></div>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
     <div class = "container">
       <%= yield %>
     </div>
