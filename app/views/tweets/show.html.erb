@@ -1,35 +1,39 @@
-<h1>tweet show</h1>
+<h1>つぶやき</h1>
     <div class = 'row'>
         <div>
-            <%= attachment_image_tag @tweet, :image, size: "50x50" %>
-            <%= @tweet.user.name %>
-            <%= @tweet.title %>
-            <%= @tweet.body %>
-            <% if @tweet.user_id == current_user.id %>
-                <%= link_to 'Destroy', @tweet, method: :delete, class: "btn-sm btn-danger" %>
-            <% end %>
-            <% if current_user.already_favorited?(@tweet) %>
-                <%= link_to 'お気に入り解除', tweet_favorites_path(@tweet), method: :delete, class: "btn btn-warning" %>
-            <% else %>
-                <%= link_to 'お気に入り', tweet_favorites_path(@tweet), method: :post, class: "btn btn-primary" %>
-            <% end %>
+            <span><%= attachment_image_tag @tweet, :image, size: "50x50" %></span>
+            <span><%= @tweet.user.name %></span>
+            <span><%= @tweet.title %></span>
+            <span><%= @tweet.body %></span>
+            <span class="favorite">
+                <% if @tweet.user_id == current_user.id %>
+                    <%= link_to 'Destroy', @tweet, method: :delete, class: "btn-sm btn-danger" %>
+                <% end %>
+                <% if current_user.already_favorited?(@tweet) %>
+                    <%= link_to 'お気に入り解除', tweet_favorites_path(@tweet), method: :delete, class: "btn btn-warning" %>
+                <% else %>
+                    <%= link_to 'お気に入り', tweet_favorites_path(@tweet), method: :post, class: "btn btn-primary" %>
+                <% end %>
+            </span>
             <p>ジャンル:
                 <% @tweet.genres.each do |genre| %>
                     <%= genre.type %>
                 <% end %>
             </p>
         </div>
+        <div>
+            <%= form_for [@tweet, @comment] do |f| %>
+                <%= f.text_field :content %>
+                <%= f.submit 'コメントする' %>
+            <% end %>
+        </div>
         
-        <%= form_for [@tweet, @comment] do |f| %>
-            <%= f.text_field :content %>
-            <%= f.submit %>
-        <% end %>
 
-        <table class = "table" >
+        <table class = "table table-hover" >
             <thead>
-                <th>image</th>
-                <th>name</th>
-                <th>comment</th>
+                <th>写真</th>
+                <th>名前</th>
+                <th>コメント</th>
                 <th></th>
                 <th></th>
             </thead>
@@ -39,7 +43,7 @@
                 <td><%= comment.user.name %></td>
                 <td><%= comment.content %></td>
                 <td><% if comment.user_id == current_user.id %>
-                        <%= link_to 'Destroy', tweet_comments_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                        <%= link_to 'コメント削除', tweet_comments_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
                     <% end %>
                 </td>
             </tbody>

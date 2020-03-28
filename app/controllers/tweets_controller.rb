@@ -1,25 +1,30 @@
 class TweetsController < ApplicationController
 
-    def top
+    def top #トップ画面
     end
 
     def index #tweetの一覧画面
         @tweets = Tweet.all
-        # @q = Tweet.ransack(params[:q])
-        # @tweets = @q.result(distinct: true)
+        @q = TweetGenre.ransack(params[:q])
+        @tweet_genres = @q.result(distinct: true)
     end
 
     def search #検索結果を表示
-        # @q = Tweet.search(search_params)
-        # @tweets = @q.result(distinct: true)
-
+        ids = [] #配列形式を指定
+        @q = TweetGenre.search(search_params)
+        @tweet_genres = @q.result(distinct: true)
+        @tweet_genres.each do |genre| 
+            ids << genre.tweet_id # ids[tweet_genresのtweet_idが配列で選んだgenre_idの数だけ入る]
+        end
+        tweet_ids = ids.uniq #uniqで重複しているtweet_idを一意にしてtweet_idsに格納
+        @tweets = Tweet.where(id: tweet_ids) #where(id: uniqで一意にしたtweet_id)
     end
 
     def new #tweetの新規投稿画面
         @tweet = Tweet.new
     end
 
-    def create
+    def create#保存機能
         @tweet = Tweet.new(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
@@ -37,7 +42,7 @@ class TweetsController < ApplicationController
         @favorite = Favorite.new
     end
 
-    def destroy
+    def destroy #削除機能
         @tweet = Tweet.find(params[:id])
         @tweet.destroy
         flash[:notice] = "successfully delete tweet!"
@@ -45,10 +50,9 @@ class TweetsController < ApplicationController
     end
     
 private
-    # def search_params
-    #     params.require(:q).permit({:genre_id_in => []})
-        # params.require(:q).permit({:genre_ids_in => []})
-    # end
+    def search_params
+        params.require(:q).permit({:genre_id_in => []})
+    end
 
     def tweet_params 
         params.require(:tweet).permit(:title, :body, :image, {:genre_ids => []})
