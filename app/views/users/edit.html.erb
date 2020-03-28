@@ -1,28 +1,26 @@
-<h1>user edit</h1>
-<% @user.errors.full_messages.each do |message| %>
-    <%= message %>
-<% end %>
-<div calss = "row">
-    <div calss = "col-xs-3">
-        <%= form_for(@user) do |f| %>
-            <table calss = "table">
-                <tr>
-                <td>
-                    <%= f.label :image %>
-                    <%= f.attachment_field :profile_image %>
-                </td>
-                </tr>
-                <tr>
-                    <th><%= f.label :name %></th>
-                    <td><%= f.text_field :name %></td>
-                </tr>
-                <tr>
-                    <th><%= f.label :introduction %></th>
-                    <td><%= f.text_area :introduction %></td>
-                </tr>
-                    <td><%= f.submit %></td>
-            </table>
-        <% end %>
+<h1>プロフィール編集</h1>
+    <% @user.errors.full_messages.each do |message| %>
+        <%= message %>
+    <% end %>
+    <div calss = "row">
+        <div calss = "col-xs-5">
+            <%= form_for(@user) do |f| %>
+                <table calss = "table">
+                    <tr>
+                        <th>写真</th>
+                        <td><%= f.attachment_field :profile_image %></td>
+                    </tr>
+                    <tr>
+                        <th>名前</th>
+                        <td><%= f.text_field :name %></td>
+                    </tr>
+                    <tr>
+                        <th>自己紹介</th>
+                        <td><%= f.text_area :introduction %></td>
+                    </tr>
+                </table>
+                <%= f.submit '変更する'%>
+            <% end %>
+        </div>
     </div>
-</div>
 
