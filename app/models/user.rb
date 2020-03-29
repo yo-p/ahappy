@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_tweet, through: :favorites, source: :tweet
 
+  # すでにお気に入りしているか
   def already_favorited?(tweet)
     self.favorites.exists?(tweet_id: tweet.id)
   end

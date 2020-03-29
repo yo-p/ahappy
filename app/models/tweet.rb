@@ -2,14 +2,14 @@ class Tweet < ApplicationRecord
     #genre_idを配列で保存
     # serialize :genre_id
 
+    # tweetを新着順に表示
+    default_scope -> {order(created_at: :desc)}
+
     #tweetの画像も投稿可能
     attachment :image 
 
     belongs_to :user 
 
-    #開発途中ジャンル空でも投稿可能
-    # belongs_to :genre, optional: true
-    
     #dependent: :destroyをつける事でtweetに紐ずくcommentsも削除
     has_many :comments, dependent: :destroy
 
