@@ -2,12 +2,12 @@
     <div class = 'row'>
         <div>
             <span><%= attachment_image_tag @tweet, :image, size: "50x50" %></span>
-            <span><%= @tweet.user.name %></span>
+            <strong><%= @tweet.user.name %></strong>
             <span><%= @tweet.title %></span>
             <span><%= @tweet.body %></span>
             <span class="favorite">
                 <% if @tweet.user_id == current_user.id %>
-                    <%= link_to 'Destroy', @tweet, method: :delete, class: "btn-sm btn-danger" %>
+                    <%= link_to '削除', @tweet, method: :delete, class: "btn btn-danger" %>
                 <% end %>
                 <% if current_user.already_favorited?(@tweet) %>
                     <%= link_to 'お気に入り解除', tweet_favorites_path(@tweet), method: :delete, class: "btn btn-warning" %>
@@ -40,7 +40,7 @@
             <% @comments.each do |comment| %>
             <tbody>
                 <td><%= attachment_image_tag comment.user, :profile_image, size: "50x50" %></td>
-                <td><%= comment.user.name %></td>
+                <td><%= link_to comment.user.name, comment.user %></td>
                 <td><%= comment.content %></td>
                 <td><% if comment.user_id == current_user.id %>
                         <%= link_to 'コメント削除', tweet_comments_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
