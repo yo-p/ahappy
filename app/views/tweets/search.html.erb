@@ -22,7 +22,7 @@
                     <br>
                 <% end %></td>
             <td><%= link_to tweet.title, tweet %></td>
-            <td><%= tweet.user.name %></td>
+            <td><%= link_to tweet.user.name, tweet.user %></td>
             <td><%= tweet.comments.count %></td>
             <td><%= tweet.favorites.count %></td>
         </tr>

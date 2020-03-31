@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
         user_path(resource)
     end
-    #ログアウト後はログインページへ（トップページへ変更予定）
+    #ログアウト後はトップページへ
     def after_sign_out_path_for(resource)
         root_path
     end

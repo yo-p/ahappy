@@ -1,46 +1,26 @@
-
 <div class = "row" >
-    <div class = "col-xs-6 col-xs-offset-3">
         <h1>つぶやき</h1>
         <%= form_for @tweet do |f| %>
             <table>
                 <tr>
-                    <th>写真</th>
+                    <th><%= f.label :写真 %></th>
                     <td><%= f.attachment_field :image %></td>
                 </tr>
                 <tr>
-                    <th>タイトル</th>
+                    <th><%= f.label :タイトル %></th>
                     <td><%= f.text_field :title %></td>
                     </tr>
                 <tr>
-                    <th>感想</th>
+                    <th><%= f.label :感想 %></th>
                     <td><%= f.text_area :body %></td>
                 </tr>
                 <tr>
-                    <th>ジャンル</th>
+                    <th><%= f.label :ジャンル %></th>
                     <td><%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :type) do |b| %>
                             <%= b.label {b.check_box + b.text} %>
                         <% end %></td>
                     </tr>
-                <td><%= f.submit 'つぶやいちゃう' %></td>
             </table>
+            <%= f.submit 'つぶやいちゃう' %>
         <% end %>
-    </div>
-    
-
-
-    <!---<%= form_for @tweet do |f| %>
-        <div><%= f.label :image %></div>
-        <div><%= f.attachment_field :image %></div>
-        <div><%= f.label :title %></div>
-        <div><%= f.text_field :title %></div>
-        <div><%= f.label :body %></div>
-        <div><%= f.text_area :body %></div>
-
-        <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :type) do |b| %>
-                <%= b.label {b.check_box + b.text} %>
-            <% end %>
-
-        <div><%= f.submit %></div>
-    <% end %>
-</div>--->
+</div>
