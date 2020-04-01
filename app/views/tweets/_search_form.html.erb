@@ -1,7 +1,7 @@
 <%= search_form_for(@q, url:search_path, method: :get) do |f| %>
-        <%= f.label :genre_ids_in, 'ジャンル' %>
+        <%= f.label :genre_ids_in, 'Genre' %>
         <%= f.collection_check_boxes(:genre_id_in, Genre.all, :id, :type)  do |b| %>
             <%= b.label {b.check_box + b.text} %>
         <% end %>
-        <%= f.submit '検索', class:"btn btn-info" %>
+        <%= f.submit 'Search', class:"btn btn-info" %>
     <% end %>

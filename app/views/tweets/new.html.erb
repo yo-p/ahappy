@@ -2,28 +2,28 @@
     <% @tweet.errors.full_messages.each do |message| %>
             <%= message %>
         <% end %>
-        <h1>つぶやき</h1>
+        <h1>New Tweet!!</h1>
         <%= form_for @tweet do |f| %>
             <table>
                 <tr>
-                    <th><%= f.label :写真 %></th>
+                    <th width="80"height="100"><%= f.label :image %></th>
                     <td><%= f.attachment_field :image %></td>
                 </tr>
                 <tr>
-                    <th><%= f.label :タイトル %></th>
+                    <th width="80"height="100"><%= f.label :Title %></th>
                     <td><%= f.text_field :title %></td>
                     </tr>
                 <tr>
-                    <th><%= f.label :感想 %></th>
-                    <td><%= f.text_area :body %></td>
+                    <th width="80"height="100"><%= f.label :Impression %></th>
+                    <td><%= f.text_area :body, :size=>"60x3"%></td>
                 </tr>
                 <tr>
-                    <th><%= f.label :ジャンル %></th>
+                    <th width="80"height="100"><%= f.label :Genre %></th>
                     <td><%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :type) do |b| %>
                             <%= b.label {b.check_box + b.text} %>
                         <% end %></td>
                     </tr>
             </table>
-            <%= f.submit 'つぶやいちゃう' %>
+            <%= f.submit 'Let Tweet', class:"btn btn-info" %>
         <% end %>
 </div>

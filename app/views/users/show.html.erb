@@ -3,19 +3,19 @@
     <% end %>
     <div class = "row">
         <div class = "col-xs-3">
-            <strong>ユーザー情報</strong>
             <%= render 'users/user_info' %>
         </div>
+        
         <div class = 'col-xs-9' >
             <table class = "table table-hover" >
                 <thead>
                     <tr>
-                        <th>写真</th>
-                        <th>ジャンル</th>
-                        <th>タイトル</th>
-                        <th>名前</th>
-                        <th>コメント</th>
-                        <th>お気に入り</th>
+                        <th>Image</th>
+                        <th>Genre</th>
+                        <th>Title</th>
+                        <th>Name</th>
+                        <th>Comment</th>
+                        <th>Favorite</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -36,7 +36,7 @@
                         <td><%= fa_icon("comments",text: tweet.comments.count) %></td>
                         <td><%= fa_icon("heart",text: tweet.favorites.count) %></td>
                         <td><% if tweet.user_id == current_user.id %>
-                                <%= link_to '削除', @tweet, method: :delete, class: "btn btn-danger" %>
+                                <%= link_to 'Destroy', @tweet, method: :delete, class: "btn btn-danger" %>
                             <% end %></td>
                     </tr>
                 <% end %>
