@@ -1,4 +1,4 @@
-<h1>つぶやき</h1>
+<h1>Tweet Show</h1>
     <div class = 'row'>
         <div>
             <span><%= attachment_image_tag @tweet, :image, size: "50x50" %></span>
@@ -25,7 +25,7 @@
         <div>
             <%= form_for [@tweet, @comment] do |f| %>
                 <%= f.text_field :content %>
-                <%= f.submit 'コメントする' %>
+                <%= f.submit 'comment', class:"btn btn-info" %>
             <% end %>
         </div>
         
@@ -44,7 +44,7 @@
                 <td><%= link_to comment.user.name, comment.user %></td>
                 <td><%= comment.content %></td>
                 <td><% if comment.user_id == current_user.id %>
-                        <%= link_to 'コメント削除', tweet_comments_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                        <%= link_to 'destroy', tweet_comments_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
                     <% end %>
                 </td>
             </tbody>
