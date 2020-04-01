@@ -6,16 +6,17 @@
             <span><%= @tweet.title %></span>
             <span><%= @tweet.body %></span>
             <span class="favorite">
-                <% if @tweet.user_id == current_user.id %>
-                    <%= link_to '削除', @tweet, method: :delete, class: "btn btn-danger" %>
-                <% end %>
                 <% if current_user.already_favorited?(@tweet) %>
-                    <%= link_to 'お気に入り解除', tweet_favorites_path(@tweet), method: :delete, class: "btn btn-warning" %>
+                    <%= link_to tweet_favorites_path(@tweet), method: :delete  do %>
+                        <i class="fa fa-heart unfavorite-btn"></i>
+                    <% end %>
                 <% else %>
-                    <%= link_to 'お気に入り', tweet_favorites_path(@tweet), method: :post, class: "btn btn-primary" %>
+                    <%= link_to tweet_favorites_path(@tweet), method: :post do %>
+                        <i class="fa fa-heart favorite-btn"></i>
+                    <% end %>
                 <% end %>
             </span>
-            <p>ジャンル:
+            <p>ジャンル
                 <% @tweet.genres.each do |genre| %>
                     <%= genre.type %>
                 <% end %>
