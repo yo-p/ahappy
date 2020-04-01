@@ -16,6 +16,36 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: paleturquoise;
+}
+
+ul {
+    list-style: none;
+}
+
+nav {
+    height: 50px;
+    background-color: bisque;
+}
+
+.logo{
+    font-size: 25px;
+}
+
+.nav-list{
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+
 
 
 

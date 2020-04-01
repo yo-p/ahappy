@@ -13,18 +13,20 @@
     <header>
       <div class = "container">
         <div class = "row">
-          <nav>
-          <% if user_signed_in? %>
-            <div class = "col-xs-4"><%= link_to 'A!!happy', root_path %></div>
-            <div class = "col-xs-2"><%= link_to 'Home', user_path(current_user) %></div>
-            <div class = "col-xs-2"><%= link_to 'Tweets', tweets_path %></div>
-            <div class = "col-xs-2"><%= link_to 'New Tweet', new_tweet_path %></div>
-            <div class = "col-xs-2"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></div>
-          <% else %>
-            <div class = "col-xs-8"><%= link_to 'A!!happy', root_path %></div>
-            <div class = "col-xs-2" ><%= link_to 'Sign Up', new_user_registration_path %></div>
-            <div class = "col-xs-2" ><%= link_to 'Login', new_user_session_path %></div>
-          <% end %>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul>
+              <% if user_signed_in? %>
+                <li class = "logo col-xs-4"><%= link_to 'A!!happy', root_path %></li>
+                <li class = "nav-list col-xs-2"><%= link_to 'Home', user_path(current_user) %></li>
+                <li class = "nav-list col-xs-2"><%= link_to 'Tweets', tweets_path %></li>
+                <li class = "nav-list col-xs-2"><%= link_to 'New Tweet', new_tweet_path %></li>
+                <li class = "nav-list col-xs-2"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li class = "logo col-xs-8"><%= link_to 'A!!happy', root_path %></li>
+                <li class = "nav-list col-xs-2" ><%= link_to 'Sign Up', new_user_registration_path %></li>
+                <li class = "nav-list col-xs-2" ><%= link_to 'Login', new_user_session_path %></li>
+              <% end %>
+            </ul>
           </nav>
         </div>
       </div>
@@ -33,5 +35,6 @@
     <div class = "container">
       <%= yield %>
     </div>
+
   </body>
 </html>
