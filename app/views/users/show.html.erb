@@ -16,6 +16,7 @@
                         <th>名前</th>
                         <th>コメント</th>
                         <th>お気に入り</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,8 +33,11 @@
                             <% end %></td>
                         <td><%= link_to tweet.title, tweet %></td>
                         <td><%= tweet.user.name %></td>
-                        <td><%= tweet.comments.count %></td>
-                        <td><%= tweet.favorites.count %></td>
+                        <td><%= fa_icon("comments",text: tweet.comments.count) %></td>
+                        <td><%= fa_icon("heart",text: tweet.favorites.count) %></td>
+                        <td><% if tweet.user_id == current_user.id %>
+                                <%= link_to '削除', @tweet, method: :delete, class: "btn btn-danger" %>
+                            <% end %></td>
                     </tr>
                 <% end %>
                 </tbody>

@@ -23,8 +23,8 @@
                 <% end %></td>
             <td><%= link_to tweet.title, tweet %></td>
             <td><%= link_to tweet.user.name, tweet.user %></td>
-            <td><%= tweet.comments.count %></td>
-            <td><%= tweet.favorites.count %></td>
+            <td><%= fa_icon("comments",text: tweet.comments.count) %></td>
+            <td><%= fa_icon("heart",text: tweet.favorites.count) %></td>
         </tr>
     <% end %>
     </tbody>

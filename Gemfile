@@ -79,6 +79,10 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootswatch'
 gem 'jquery-rails'
 
+# fontawesome
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
+
 #画像アップロード
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 
