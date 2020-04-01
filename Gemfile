@@ -76,6 +76,7 @@ gem 'devise'
 
 #レイアウト
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootswatch'
 gem 'jquery-rails'
 
 #画像アップロード
