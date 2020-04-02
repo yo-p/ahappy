@@ -1,6 +1,6 @@
 <table class = "table"> 
     <tr>
-        <td><%= attachment_image_tag @user, :profile_image, size: "100x100",format:"jpeg" %></td>
+        <td><%= attachment_image_tag @user, :profile_image, size: "100x100",format:"jpeg",fallback: "jude-beck-MLizaJbVQIM-unsplash.jpg" %></td>
     </tr>
     <tr>
         <td><%= @user.name %></td>
