@@ -1,12 +1,12 @@
 <div class="row">
-    <h1>お気に入り</h1>
+    <h1>Favorites</h1>
         <table class = "table table-hover">
             <thead>
                 <tr>
-                    <th>名前</th>
-                    <th>タイトル</th>
-                    <th>ジャンル</th>
-                    <th>写真</th>
+                    <th>user name</th>
+                    <th>title</th>
+                    <th>genre</th>
+                    <th>tweet image</th>
                 </tr>
             </thead>
             <% @favorites.each do |favorite| %>
@@ -19,7 +19,7 @@
                         <br>
                     <% end %></td>
                 <td><%= link_to tweet_path(favorite.tweet) do %>
-                        <%= attachment_image_tag favorite.tweet, :image, size: "50x50", format:"jpeg" %>
+                        <%= attachment_image_tag favorite.tweet, :image, size: "50x50", format:"jpeg",fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %>
                     <% end %></td>
                 </tr>
             </tbody>
