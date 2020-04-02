@@ -1,8 +1,10 @@
-# config valid for current version and patch releases of Capistrano
-lock "~> 3.12.1"
+# frozen_string_literal: true
 
-set :application, "ahappy"
-set :repo_url, "git@example.com:me/https://github.com/yo-p/ahappy.git"
+# config valid for current version and patch releases of Capistrano
+lock '~> 3.12.1'
+
+set :application, 'ahappy'
+set :repo_url, 'git@example.com:me/https://github.com/yo-p/ahappy.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -38,7 +40,7 @@ set :repo_url, "git@example.com:me/https://github.com/yo-p/ahappy.git"
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-set :deploy_to, "/home/ec2-user/ahappy"
+set :deploy_to, '/home/ec2-user/ahappy'
 set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+set :linked_files, %w[config/master.key .env]
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
