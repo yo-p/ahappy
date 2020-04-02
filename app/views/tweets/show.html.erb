@@ -1,7 +1,7 @@
 <h1>Tweet Show</h1>
     <div class = 'row'>
         <div>
-            <span><%= attachment_image_tag @tweet, :image, size: "50x50" %></span>
+            <span><%= attachment_image_tag @tweet, :image, size: "50x50", fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %></span>
             <strong><%= @tweet.user.name %></strong>
             <span><%= @tweet.title %></span>
             <span><%= @tweet.body %></span>
