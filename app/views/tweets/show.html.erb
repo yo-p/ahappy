@@ -6,6 +6,7 @@
                 <tr>
                     <th width="110"height=50>tweet image</th>
                     <th width="120"height=50>title</th>
+                    <th width="150"height=50>content</th>
                     <th width="110"height=50>user name</th>
                     <th width="110"height=50>genre</th>
                     <th width="110"height=50></th>
@@ -16,6 +17,7 @@
             <tr>
                 <td><%= attachment_image_tag @tweet, :image, size: "100x100", fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %></td>
                 <td><%= @tweet.title %></td>
+                <td><%= @tweet.body %></td>
                 <td><%= @tweet.user.name %></td>
                 <td><% @tweet.genres.each do |genre| %>
                         <%= genre.type %>
