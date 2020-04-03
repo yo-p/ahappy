@@ -18,33 +18,36 @@
 @import "font-awesome";
 @import 'font-awesome-sprockets';
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Courier New', Courier, monospace;
-    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 50px;
 }
 
-ul {
-    list-style: none;
+.top-page {
+    background-image: image-url("bruce-mars-AndE50aaHn4-unsplash.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 890px;
 }
 
-nav {
-    height: 50px;
-    background-color: bisque;
+.top-contant{
+    width: 100%;
+    height: 890px;
+    padding-top: 500px;
 }
 
-.logo {
+.top-logo {
+    font-size: 60px;
+    color: white;
+}
+
+.top-text {
     font-size: 25px;
+    color: white;
 }
 
-.nav-list{
-    font-size: 15px;
-    padding-top: 10px;
+.navbar {
+    background-color: navajowhite;
 }
 
 .favorite-btn {
@@ -54,6 +57,7 @@ nav {
 .unfavorite-btn {
     color: #e54747;
 }
+
 
 
 
