@@ -9,7 +9,7 @@
                     <th width="150"height=50>content</th>
                     <th width="110"height=50>user name</th>
                     <th width="110"height=50>genre</th>
-                    <th width="110"height=50></th>
+                    <th width="110"height=50>favorite</th>
                     <th></th>
                 </tr>
             </thead>
@@ -24,15 +24,8 @@
                         <br>
                     <% end %>
                 </td>
-                <td><% if current_user.already_favorited?(@tweet) %>
-                        <%= link_to tweet_favorites_path(@tweet), method: :delete  do %>
-                            <i class="fa fa-heart fa-4x unfavorite-btn"></i>
-                    <% end %>
-                    <% else %>
-                        <%= link_to tweet_favorites_path(@tweet), method: :post do %>
-                            <i class="fa fa-heart fa-4x favorite-btn"></i>
-                        <% end %>
-                    <% end %>
+                <td id = "show_favorite_<%= @tweet.id %>">
+                    <%= render 'favorites/favorite', tweet: @tweet %>
                 </td>
             </tr>
             </tbody>
