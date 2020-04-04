@@ -53,13 +53,12 @@
                 <td><%= link_to comment.user.name, comment.user %></td>
                 <td><%= comment.content %></td>
                 <td><% if comment.user_id == current_user.id %>
-                        <%= link_to 'destroy', tweet_comments_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                        <%= link_to 'Destroy', tweet_comment_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
                     <% end %>
                 </td>
             </tbody>
             <% end %>
         </table>
-            
-    </div>
+</div>
 
 
