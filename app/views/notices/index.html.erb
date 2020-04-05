@@ -1,0 +1,12 @@
+<h1>通知</h1>
+    <%= link_to "通知削除", notice_path(@notices), method: :delete %>
+    <% if @notices.exists? %>
+        <%= notice_form(notice) %>
+            <%= "(#{time_ago_in_words(notice.created_at)}前)" %>
+            <br>
+        <% if !@comment.nil? %>
+            <%= @comment %>
+        <% end %>
+    <% else %>
+        <p>通知はありません</p>
+    <% end %>

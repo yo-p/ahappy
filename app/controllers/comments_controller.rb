@@ -6,6 +6,10 @@ class CommentsController < ApplicationController
     @comment.tweet_id = params[:tweet_id]
     @comment.user_id = current_user.id
     if @comment.save
+      #通知機能
+      @tweet = @comment.tweet
+      @tweet.create_notice_comment!(current_user, @comment_id)
+      #######
       redirect_back(fallback_location: root_path)
     else
       redirect_back(fallback_location: root_path)
