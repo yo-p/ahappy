@@ -24,12 +24,13 @@
                         <br>
                     <% end %>
                 </td>
-                <td id = "show_favorite_<%= @tweet.id %>">
+                <td id="show_favorite_<%= @tweet.id %>">
                     <%= render 'favorites/favorite', tweet: @tweet %>
                 </td>
             </tr>
             </tbody>
         </table>
+        
         <div>
             <%= form_for [@tweet, @comment] do |f| %>
                 <%= f.text_field :content , :size=>"60x3"%>
