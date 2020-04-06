@@ -1,3 +1,4 @@
+<div class = "container">
 <div class = 'row'>
     <h1>Tweet Show</h1>
         <table>
@@ -5,9 +6,10 @@
                 <tr>
                     <th width="110"height=50>tweet image</th>
                     <th width="120"height=50>title</th>
+                    <th width="150"height=50>content</th>
                     <th width="110"height=50>user name</th>
                     <th width="110"height=50>genre</th>
-                    <th width="110"height=50></th>
+                    <th width="110"height=50>favorite</th>
                     <th></th>
                 </tr>
             </thead>
@@ -15,25 +17,20 @@
             <tr>
                 <td><%= attachment_image_tag @tweet, :image, size: "100x100", fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %></td>
                 <td><%= @tweet.title %></td>
+                <td><%= @tweet.body %></td>
                 <td><%= @tweet.user.name %></td>
                 <td><% @tweet.genres.each do |genre| %>
                         <%= genre.type %>
                         <br>
                     <% end %>
                 </td>
-                <td><% if current_user.already_favorited?(@tweet) %>
-                        <%= link_to tweet_favorites_path(@tweet), method: :delete  do %>
-                            <i class="fa fa-heart fa-4x unfavorite-btn"></i>
-                    <% end %>
-                    <% else %>
-                        <%= link_to tweet_favorites_path(@tweet), method: :post do %>
-                            <i class="fa fa-heart fa-4x favorite-btn"></i>
-                        <% end %>
-                    <% end %>
+                <td id="show_favorite_<%= @tweet.id %>">
+                    <%= render 'favorites/favorite', tweet: @tweet %>
                 </td>
             </tr>
             </tbody>
         </table>
+        
         <div>
             <%= form_for [@tweet, @comment] do |f| %>
                 <%= f.text_field :content , :size=>"60x3"%>
@@ -57,13 +54,12 @@
                 <td><%= link_to comment.user.name, comment.user %></td>
                 <td><%= comment.content %></td>
                 <td><% if comment.user_id == current_user.id %>
-                        <%= link_to 'destroy', tweet_comments_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
+                        <%= link_to 'Destroy', tweet_comment_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
                     <% end %>
                 </td>
             </tbody>
             <% end %>
         </table>
-            
-    </div>
+</div>
 
 

@@ -8,7 +8,7 @@ class NoticesController < ApplicationController
     end
 
     def destroy
-        @notices = current_user.passive_notices.destroy.all
+        @notices = current_user.passive_notices.destroy_all
         redirect_to notices_path
     end
 end

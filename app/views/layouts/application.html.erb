@@ -8,27 +8,43 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
-      <ul class="vavbar-nav ml-auto">
-      <% if user_signed_in? %>
-        <li class = "logo col-xs-4"><%= link_to 'A!!happy', root_path %></li>
-        <li class = "nav-list col-xs-2"><%= link_to user_path(current_user) do %>
-              <%= fa_icon("home",text: "Home")%>
-            <% end %></li>
-        <li class = "nav-list col-xs-2"><%= link_to 'Tweets', tweets_path %></li>
-        <li class = "nav-list col-xs-2"><%= link_to 'New Tweet', new_tweet_path %></li>
-        <li class = "nav-list col-xs-2"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>            
-      <% else %>
-          <li class = "logo col-xs-8"><%= link_to 'A!!happy', root_path %></li>
-          <li class = "nav-list col-xs-2" ><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li class = "nav-list col-xs-2" ><%= link_to 'Login', new_user_session_path %></li>
-      <% end %>
-      </ul>
-    </nav>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navi" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand">
+          <%= link_to 'a!!happy', root_path %>
+        </div>
+      </div>
 
-    <div class = "container">
+      <div class="collapse navbar-collapse" id="bs-navi">
+        <ul class="nav navbar-right navbar-nav">
+        <% if user_signed_in? %>
+          <li>  
+            <%= link_to user_path(current_user) do %>
+              <%= fa_icon("home",text: "Home")%>
+            <% end %>
+          </li>
+          <li><%= link_to 'Tweets', tweets_path %></li>
+          <li><%= link_to 'New Tweet', new_tweet_path %></li>
+          <li><%= link_to 'Notice', notices_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    
+
       <%= yield %>
     </div>
 

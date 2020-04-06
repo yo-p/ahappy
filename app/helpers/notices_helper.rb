@@ -1,16 +1,15 @@
 module NoticesHelper
     def notice_form(notice)
-        @visitor = notice.visitor
+        visitor = link_to notice.visitor.name, notice.visitor
         @comment = nil
-        @visitor_comment = notice.comment_id
+        your_tweet = link_to 'あなたの投稿', notice.tweet
+
         case notice.action
-        when 'favorite'
-            tag.a(notice.visitor.name, href: user_path(@visitor)) + 'が' + tag.a('あなたの投稿', href: tweet_path(notification.tweet_id)) + 'にいいねしました'
-        when 'comment'
-            @comment = Comment.find_by(id: @visitor_comment)
-            @comment_content = @comment.content
-            @tweet_title = @comment.tweet.title
-            tag.a(@visitor.name, href: user_path(@visitor)) + 'が' + tag.a("#{@tweet_title}", href: tweet_path(notification.tweet_id)) + 'にコメントしました'
+        when 'favorite' then
+            "#{visitor}が#{your_tweet}をお気に入りしました！"
+        when 'comment' then
+            @comment = Comment.find_by(id: notice.comment_id)
+            "#{visitor}が#{your_tweet}にコメントしました!"
         end
     end
 end

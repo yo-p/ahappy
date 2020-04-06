@@ -6,10 +6,12 @@ class CommentsController < ApplicationController
     @comment.tweet_id = params[:tweet_id]
     @comment.user_id = current_user.id
     if @comment.save
+
       #通知機能
       @tweet = @comment.tweet
-      @tweet.create_notice_comment!(current_user, @comment_id)
+      @tweet.create_notice_comment!(current_user, @comment.id)
       #######
+      
       redirect_back(fallback_location: root_path)
     else
       redirect_back(fallback_location: root_path)
@@ -17,7 +19,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(tweet_id: params[:tweet_id])
+    # @comment = Comment.find_by(id: params[:id],tweet_id: params[:tweet_id], user_id: current_user.id)
+    @comment = Comment.find_by(id: params[:id], tweet_id: params[:tweet_id])
     @comment.destroy
     redirect_back(fallback_location: root_path)
   end

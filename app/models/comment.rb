@@ -7,4 +7,7 @@ class Comment < ApplicationRecord
   has_many :notices, dependent: :destroy
 
 
+  default_scope -> { order(created_at: :desc) }
+
+  validates :content, presence: true
 end

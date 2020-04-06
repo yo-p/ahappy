@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show edit update]
 
   resources :tweets, only: %i[new create index show destroy] do
-    resource :comments, only: %i[create destroy]
+    resources :comments, only: %i[create destroy]
     resource :favorites, only: %i[create destroy]
   end
 

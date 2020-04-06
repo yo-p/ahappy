@@ -7,17 +7,28 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorite.new(user_id: current_user.id, tweet_id: params[:tweet_id])
-    @favorite.save
+    @tweet = Tweet.find(params[:tweet_id])
+    favorite = current_user.favorites.build(tweet_id: params[:tweet_id])
+    favorite.save
+    
     #通知機能
-    create_notice_favorite!(current_user)
+    @tweet.create_notice_favorite!(current_user)
     ######
-    redirect_back(fallback_location: root_path)
+    
+    
+
+    # @favorite = Favorite.new(user_id: current_user.id, tweet_id: params[:tweet_id])
+    # @favorite.save
+    # redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    @favorite = Favorite.find_by(user_id: current_user.id, tweet_id: params[:tweet_id])
-    @favorite.destroy
-    redirect_back(fallback_location: root_path)
+    @tweet = Tweet.find(params[:tweet_id])
+    favorite = Favorite.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
+    favorite.destroy
+
+    # @favorite = Favorite.find_by(user_id: current_user.id, tweet_id: params[:tweet_id])
+    # @favorite.destroy
+    # redirect_back(fallback_location: root_path)
   end
 end
