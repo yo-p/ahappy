@@ -1,0 +1,25 @@
+<div class="row">
+
+    <table class = "table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= attachment_image_tag notice.visitor, :profile_image, size: "50x50",format:"jpeg",fallback: "jude-beck-MLizaJbVQIM-unsplash.jpg" %></td>
+                <td><%== notice_form(notice) %></td>
+                <td><% if !@comment.nil? %>
+                        <%= @comment.content %>
+                    <% end %>
+                    <br>
+                </td>
+                <td><%= "(#{time_ago_in_words(notice.created_at)})" %></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

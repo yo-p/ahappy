@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resource :favorites, only: %i[create destroy]
   end
 
+  resources :notices, only: %i[index destroy]
+
   get 'search', to: 'tweets#search'
   get 'favorites/index'
   root 'tweets#top'

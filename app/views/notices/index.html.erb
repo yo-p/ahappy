@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+    <h1>Notications</h1>
+
+    <% notices = @notices.where.not(visitor_id: current_user.id) %>
+
+        <h1><%= link_to notice_path(@notices), method: :delete do %></h1>
+            <%= fa_icon("trash",text: "Destroy all")%>
+        <% end %>
+            <% if notices.exists? %>
+                <%= render notices %>
+            <% else %>
+                <h3>通知はありません</h3>
+            <% end%>
+    </div>
+</div>

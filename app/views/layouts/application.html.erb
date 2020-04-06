@@ -33,6 +33,7 @@
           </li>
           <li><%= link_to 'Tweets', tweets_path %></li>
           <li><%= link_to 'New Tweet', new_tweet_path %></li>
+          <li><%= link_to 'Notice', notices_path %></li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>

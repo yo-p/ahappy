@@ -10,6 +10,12 @@ class FavoritesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     favorite = current_user.favorites.build(tweet_id: params[:tweet_id])
     favorite.save
+    
+    #通知機能
+    @tweet.create_notice_favorite!(current_user)
+    ######
+    
+    
 
     # @favorite = Favorite.new(user_id: current_user.id, tweet_id: params[:tweet_id])
     # @favorite.save
