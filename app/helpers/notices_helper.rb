@@ -12,4 +12,8 @@ module NoticesHelper
             "#{visitor}が#{your_tweet}にコメントしました!"
         end
     end
+
+    def unchecked_notices
+        @notices = current_user.passive_notices.where(checked: false)
+    end
 end

@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
         </button>
         <div class="navbar-brand">
-          <%= link_to 'a!!happy', root_path %>
+          <%= link_to 'ahappy', root_path %>
         </div>
       </div>
 
@@ -33,6 +33,11 @@
           </li>
           <li><%= link_to 'Tweets', tweets_path %></li>
           <li><%= link_to 'New Tweet', new_tweet_path %></li>
+          <li>
+              <% if unchecked_notices.any? %>
+                <i class="fa fa-circle" style="color: red;"></i>
+              <% end %>
+          </li>
           <li><%= link_to 'Notice', notices_path %></li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         <% else %>
