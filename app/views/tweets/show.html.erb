@@ -32,7 +32,7 @@
         </table>
         
         <div>
-            <%= form_for [@tweet, @comment] do |f| %>
+            <%= form_for [@tweet, @comment], remote: true do |f| %>
                 <%= f.text_field :content , :size=>"60x3"%>
                 <%= f.submit 'comment', class:"btn btn-info" %>
             <% end %>
@@ -48,17 +48,13 @@
                 <th></th>
                 <th></th>
             </thead>
-            <% @comments.each do |comment| %>
-            <tbody>
-                <td><%= attachment_image_tag comment.user, :profile_image, size: "50x50",fallback: "jude-beck-MLizaJbVQIM-unsplash.jpg" %></td>
-                <td><%= link_to comment.user.name, comment.user %></td>
-                <td><%= comment.content %></td>
-                <td><% if comment.user_id == current_user.id %>
-                        <%= link_to 'Destroy', tweet_comment_path(comment.tweet.id, comment.id), method: :delete, class: "btn-sm btn-danger" %>
-                    <% end %>
-                </td>
+            
+            <tbody id="comments_index">
+                <% @comments.each do |comment| %>
+                    <%= render partial: 'comments/comment', locals: {comment: comment} %>
+                <% end %>
             </tbody>
-            <% end %>
+            
         </table>
 </div>
 

@@ -1,0 +1,10 @@
+
+    <tr id="comment_<%= comment.id %>">
+        <td><%= attachment_image_tag comment.user, :profile_image, size: "50x50",fallback: "jude-beck-MLizaJbVQIM-unsplash.jpg" %></td>
+        <td><%= link_to comment.user.name, comment.user %></td>
+        <td><%= comment.content %></td>
+        <td><% if comment.user_id == current_user.id %>
+                <%= link_to 'Destroy', tweet_comment_path(comment.tweet.id, comment.id), method: :delete, remote: true, class: "btn-sm btn-danger" %>
+            <% end %>
+        </td>
+    </tr>
