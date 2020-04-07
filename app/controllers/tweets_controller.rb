@@ -2,10 +2,11 @@
 
 class TweetsController < ApplicationController
   before_action :authenticate_user!, except: [:top]
+
   def top; end
 
   def index # tweetの一覧画面
-    @tweets = Tweet.all
+    @tweets = Tweet.all.page(params[:page])
     @q = TweetGenre.ransack(params[:q])
     @tweet_genres = @q.result(distinct: true)
   end
@@ -19,6 +20,7 @@ class TweetsController < ApplicationController
     end
     tweet_ids = ids.uniq # uniqで重複しているtweet_idを一意にしてtweet_idsに格納
     @tweets = Tweet.where(id: tweet_ids) # where(id: uniqで一意にしたtweet_id)
+    @tweets = @tweets.page(params[:page])
   end
 
   def new # tweetの新規投稿画面
