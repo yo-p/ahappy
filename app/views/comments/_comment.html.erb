@@ -4,7 +4,7 @@
         <td><%= link_to comment.user.name, comment.user %></td>
         <td><%= comment.content %></td>
         <td><% if comment.user_id == current_user.id %>
-                <%= link_to '削除', tweet_comment_path(comment.tweet.id, comment.id), method: :delete, remote: true, class: "btn-sm btn-danger" %>
+                <%= link_to '削除', tweet_comment_path(comment.tweet.id, comment.id), method: :delete, remote: true, class: "btn btn-danger" %>
             <% end %>
         </td>
     </tr>
