@@ -31,7 +31,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     if @tweet.save
-      flash[:notice] = 'successfully created tweet!'
+      flash[:notice] = '新規投稿しました'
       redirect_to tweet_path(@tweet)
     else
       render 'new'
@@ -48,7 +48,7 @@ class TweetsController < ApplicationController
   def destroy # 削除機能
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
-    flash[:notice] = 'successfully delete tweet!'
+    flash[:notice] = '投稿を削除しました'
     redirect_to user_path(current_user)
   end
 

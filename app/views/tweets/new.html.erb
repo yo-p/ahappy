@@ -1,7 +1,12 @@
 <div class = "container">
     <div class = "row" >
-        <% @tweet.errors.full_messages.each do |message| %>
-                <%= message %>
+        <% if @tweet.errors.any? %>
+            <h3><%= @tweet.errors.count %>箇所空欄があります</h3>
+            <ul>
+                <% @tweet.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
         <% end %>
             <h1>新規投稿</h1>
             <%= form_for @tweet do |f| %>

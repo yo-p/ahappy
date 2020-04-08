@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー 
+    attributes:
+        user:
+          id: ID
+          name: 名前
+          introduction: 自己紹介
+          email: メールアドレス
+          crypted_password: パスワード
+    errors:
+      models: 
+        user:
+          attributes:
+            name: 
+              blank: が空欄です
+            email: 
+              blank: が空欄です
+            password:
+              blank: が空欄です
+
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
