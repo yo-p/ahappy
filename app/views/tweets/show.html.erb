@@ -1,61 +1,57 @@
 <div class = "container">
-<div class = 'row'>
-    <h1>Tweet Show</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th width="110"height=50>tweet image</th>
-                    <th width="120"height=50>title</th>
-                    <th width="150"height=50>content</th>
-                    <th width="110"height=50>user name</th>
-                    <th width="110"height=50>genre</th>
-                    <th width="110"height=50>favorite</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><%= attachment_image_tag @tweet, :image, size: "100x100", fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %></td>
-                <td><%= @tweet.title %></td>
-                <td><%= @tweet.body %></td>
-                <td><%= @tweet.user.name %></td>
-                <td><% @tweet.genres.each do |genre| %>
-                        <%= genre.type %>
-                        <br>
-                    <% end %>
-                </td>
-                <td id="show_favorite_<%= @tweet.id %>">
-                    <%= render 'favorites/favorite', tweet: @tweet %>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        
-        <div>
-            <%= form_for [@tweet, @comment], remote: true do |f| %>
-                <%= f.text_field :content , :size=>"60x3"%>
-                <%= f.submit 'comment', class:"btn btn-info" %>
-            <% end %>
-        </div>
-        
-        
-
-        <table class = "table table-hover" >
-            <thead>
-                <th>user image</th>
-                <th>name</th>
-                <th>comment</th>
-                <th></th>
-                <th></th>
-            </thead>
+    <div class = 'row'>
+        <h1>投稿詳細</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="110"height=50>サムネ</th>
+                        <th width="120"height=50>タイトル</th>
+                        <th width="150"height=50>コメント</th>
+                        <th width="110"height=50>名前</th>
+                        <th width="110"height=50>ジャンル</th>
+                        <th width="110"height=50>お気に入り</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= attachment_image_tag @tweet, :image, size: "100x100", fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %></td>
+                        <td><%= @tweet.title %></td>
+                        <td><%= @tweet.body %></td>
+                        <td><%= @tweet.user.name %></td>
+                        <td><% @tweet.genres.each do |genre| %>
+                                <%= genre.type %>
+                                <br>
+                            <% end %>
+                        </td>
+                        <td id="show_favorite_<%= @tweet.id %>">
+                            <%= render 'favorites/favorite', tweet: @tweet %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             
-            <tbody id="comments_index">
-                <% @comments.each do |comment| %>
-                    <%= render partial: 'comments/comment', locals: {comment: comment} %>
+            <div>
+                <%= form_for [@tweet, @comment], remote: true do |f| %>
+                    <%= f.text_field :content , :size=>"60x3"%>
+                    <%= f.submit 'コメント送信', class:"btn btn-info" %>
                 <% end %>
-            </tbody>
+            </div>
             
-        </table>
+            <table class = "table table-hover" >
+                <thead>
+                    <th></th>
+                    <th>名前</th>
+                    <th>コメント</th>
+                    <th></th>
+                </thead>
+                <tbody id="comments_index">
+                    <% @comments.each do |comment| %>
+                        <%= render partial: 'comments/comment', locals: {comment: comment} %>
+                    <% end %>
+                </tbody>
+            </table>
+    </div>
 </div>
 
 
