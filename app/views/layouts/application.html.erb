@@ -28,21 +28,21 @@
         <% if user_signed_in? %>
           <li>  
             <%= link_to user_path(current_user) do %>
-              <%= fa_icon("home",text: "Home")%>
+              <%= fa_icon("home",text: "ホーム")%>
             <% end %>
           </li>
-          <li><%= link_to 'Tweets', tweets_path %></li>
-          <li><%= link_to 'New Tweet', new_tweet_path %></li>
+          <li><%= link_to '投稿一覧', tweets_path %></li>
+          <li><%= link_to '新規投稿', new_tweet_path %></li>
           <li>
               <% if unchecked_notices.any? %>
                 <i class="fa fa-circle" style="color: red;"></i>
               <% end %>
           </li>
-          <li><%= link_to 'Notice', notices_path %></li>
-          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to '通知', notices_path %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Login', new_user_session_path %></li>
+          <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
         <% end %>
         </ul>
       </div>
