@@ -6,6 +6,5 @@ class Favorite < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
   
-  # モデルレベルで一意性（ユニーク）を保つ
   validates :user_id, uniqueness: { scope: :tweet_id }
 end

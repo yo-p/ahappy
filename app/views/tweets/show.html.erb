@@ -1,8 +1,8 @@
 <div class = "container">
     <div class = 'row'>
-    <% if flash[:notice] %>
-        <%= flash[:notice] %>
-    <% end %>
+        <% if flash[:notice] %>
+            <%= flash[:notice] %>
+        <% end %>
         <h1>投稿詳細</h1>
             <table>
                 <thead>
@@ -22,7 +22,8 @@
                         <td><%= @tweet.title %></td>
                         <td><%= @tweet.body %></td>
                         <td><%= @tweet.user.name %></td>
-                        <td><% @tweet.genres.each do |genre| %>
+                        <td>
+                            <% @tweet.genres.each do |genre| %>
                                 <%= genre.type %>
                                 <br>
                             <% end %>
@@ -43,10 +44,12 @@
             
             <table class = "table table-hover" >
                 <thead>
-                    <th></th>
-                    <th>名前</th>
-                    <th>コメント</th>
-                    <th></th>
+                    <tr>
+                        <th></th>
+                        <th>名前</th>
+                        <th>コメント</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody id="comments_index">
                     <% @comments.each do |comment| %>
