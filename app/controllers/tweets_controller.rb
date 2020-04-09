@@ -5,13 +5,13 @@ class TweetsController < ApplicationController
 
   def top; end
 
-  def index # tweetの一覧画面
+  def index 
     @tweets = Tweet.all.page(params[:page])
     @q = TweetGenre.ransack(params[:q])
     @tweet_genres = @q.result(distinct: true)
   end
 
-  def search # 検索結果を表示
+  def search 
     ids = [] # 配列形式を指定
     @q = TweetGenre.search(search_params)
     @tweet_genres = @q.result(distinct: true)
@@ -23,11 +23,11 @@ class TweetsController < ApplicationController
     @tweets = @tweets.page(params[:page])
   end
 
-  def new # tweetの新規投稿画面
+  def new 
     @tweet = Tweet.new
   end
 
-  def create # 保存機能
+  def create 
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     if @tweet.save
@@ -38,14 +38,14 @@ class TweetsController < ApplicationController
     end
   end
 
-  def show # tweetの詳細画面
+  def show 
     @tweet = Tweet.find(params[:id])
     @comments = @tweet.comments
     @comment = Comment.new
     @favorite = Favorite.new
   end
 
-  def destroy # 削除機能
+  def destroy 
     @tweet = Tweet.find(params[:id])
     @tweet.destroy
     flash[:notice] = '投稿を削除しました'
