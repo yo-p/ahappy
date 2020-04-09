@@ -14,10 +14,13 @@ ja:
           attributes:
             title: 
               blank: が空欄です
+              too_long: 20文字以内で入力してください
             body: 
               blank: が空欄です
+              too_long: 50文字以内で入力してください
             genre_ids:
               blank: が空欄です
+              too_long: は5個以上チェックできません
 
   attributes:
     created_at: 作成日

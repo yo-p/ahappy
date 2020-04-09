@@ -15,10 +15,14 @@ ja:
           attributes:
             name: 
               blank: が空欄です
+              too_long: は10文字以内で入力してください
             email: 
               blank: が空欄です
             password:
               blank: が空欄です
+            introduction:
+              too_long: は50文字以内で入力してください
+
 
   attributes:
     created_at: 作成日

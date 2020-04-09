@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 class Tweet < ApplicationRecord
-
   default_scope -> { order(created_at: :desc) }
+
+  validates :title, presence: true
+  validates :title, length: { maximum: 20 }
+  
+  validates :body, presence: true
+  validates :body, length: { maximum: 50 }
+
+  validates :genre_ids, presence: true
+  validates :genre_ids, length: { maximum: 5 }
 
   attachment :image
 
@@ -59,11 +67,5 @@ class Tweet < ApplicationRecord
     end
     notice.save if notice.valid?
   end
-
-
-
-  validates :title, presence: true
-  validates :body, presence: true
-  validates :genre_ids, presence: true
 
 end

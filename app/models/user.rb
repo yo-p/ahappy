@@ -9,7 +9,7 @@ class User < ApplicationRecord
   attachment :profile_image
 
   validates :name, presence: true
-
+  validates :name, length: { maximum: 10 }
   validates :introduction, length: { maximum: 50 }
 
   has_many :tweets, dependent: :destroy
