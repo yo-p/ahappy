@@ -3,7 +3,7 @@
 class FavoritesController < ApplicationController
   def index
     # ログインしているuserのお気に入りを全件取得
-    @favorites = Favorite.where(user_id: current_user.id).all
+    @favorites = Favorite.where(user_id: current_user.id).all.page(params[:page])
   end
 
   def create
