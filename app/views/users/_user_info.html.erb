@@ -1,21 +1,31 @@
-<h3><%= fa_icon("user")%>ユーザー</h3>
-<table class="table">
+<table class="table table-bordered sidebar">
 		<tr>
 			<td><%= attachment_image_tag @user, :profile_image, size: "100x100",format:"jpeg",fallback: "jude-beck-MLizaJbVQIM-unsplash.jpg" %></td>
 		<tr>
 			<th>名前</th>
 		</tr>
         <tr>
-            <td><%= @user.name %></td>
+            <td class="name-area"><%= @user.name %></td>
         </tr>
 		<tr>
-			<th>自己紹介</th>
+			<th>自己紹介文</th>
 		</tr>
         <tr>
-            <td><%= @user.introduction %></td>
+            <td height="150"><%= @user.introduction %></td>
+        </tr>
+        <tr>
+            <td>
+            <%= link_to favorites_index_path(@favorites) do %>
+                <%= fa_icon("heart lg", text: "お気に入り一覧")%>
+            <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= link_to edit_user_path do %>
+                    <%= fa_icon("cog lg", text: "プロフィール編集")%>
+                <% end %>
+            </td>
         </tr>
 </table>
-<div class = "row">
-    <%= link_to 'お気に入り', favorites_index_path(@favorites), class: "btn btn-primary btn-lg btn-block" %>
-    <%= link_to 'プロフィール編集', edit_user_path,  class: "btn btn-success btn-lg btn-block" %>
-</div>
+

@@ -23,8 +23,12 @@ body {
     padding-top: 50px;
 }
 
+.sidebar {
+    margin-top: 50px;
+}
+
 .top-page {
-    background-image: image-url("bruce-mars-AndE50aaHn4-unsplash.jpg");
+    background-image: image-url("sincerely-media-qcfWJG9uU5Y-unsplash.jpg");
     background-size: cover;
     width: 100%;
     height: 890px;
@@ -33,30 +37,24 @@ body {
 .top-contant{
     width: 100%;
     height: 890px;
-    padding-top: 500px;
+    padding-top: 100px;
 }
 
 .top-logo {
     font-size: 60px;
-    color: white;
+    color: rgb(35, 75, 187);
 }
 
 .top-text {
     font-size: 25px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .navbar {
     background-color: navajowhite;
 }
 
-// .favorite-btn {
-//     color: red($color: #000000);
-// }
 
-// .unfavorite-btn {
-//     color: #e54747;
-// }
 
 
 
