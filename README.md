@@ -23,38 +23,38 @@
 # リーダブルコード  
 gem 'rubocop' 
 
-# デバッグ
-gem 'pry-byebug'
-gem 'pry-doc'
-gem 'pry-rails'
+### デバッグ
+gem 'pry-byebug'  
+gem 'pry-doc'  
+gem 'pry-rails'  
 
-# ログイン機能
+### ログイン機能
 gem 'devise'
 
-# レイアウト
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'bootswatch'
+### レイアウト
+gem 'bootstrap-sass', '~> 3.3.6'  
+gem 'bootswatch'  
 gem 'jquery-rails'
 
-# Fontawesome
-gem 'font-awesome-rails'
+### Fontawesome
+gem 'font-awesome-rails'  
 gem 'font-awesome-sass'
 
-# 画像アップロード
+### 画像アップロード
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 
-# 画像のサイズ調節
+### 画像のサイズ調節
 gem 'refile-mini_magick'
 
-# 検索機能
+### 検索機能
 gem 'ransack'
 
-# RUBY VERSION
-ruby 2.5.7
+### RUBY VERSION
+ruby 2.5.7  
 
 rails (~> 5.2.4, >= 5.2.4.1)
 
-# デプロイ
+### デプロイ
 AWS, EC2, RDS
 
 ### 機能一覧
