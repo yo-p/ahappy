@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+gem 'rails', '~> 5.2.4', ">= 5.2.4.2"
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -76,7 +76,8 @@ gem 'pry-rails'
 
 gem 'devise'
 
-gem 'bootstrap-sass', '~> 3.3.6'
+# 脆弱性のためupdate 4/11
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bootswatch'
 gem 'jquery-rails'
 
@@ -90,6 +91,8 @@ gem 'refile-mini_magick'
 gem 'ransack'
 
 gem 'kaminari'
+
+
 
 gem 'dotenv-rails'
 group :production do
