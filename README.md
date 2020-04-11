@@ -32,7 +32,7 @@ gem 'pry-rails'
 gem 'devise'
 
 ### レイアウト
-gem 'bootstrap-sass', '~> 3.3.6'  
+gem 'bootstrap-sass', '~> 3.4.1'  
 gem 'bootswatch'  
 gem 'jquery-rails'
 
@@ -41,7 +41,7 @@ gem 'font-awesome-rails'
 gem 'font-awesome-sass'
 
 ### 画像アップロード
-gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile'
 
 ### 画像のサイズ調節
 gem 'refile-mini_magick'
@@ -50,9 +50,7 @@ gem 'refile-mini_magick'
 gem 'ransack'
 
 ### RUBY VERSION
-ruby 2.5.7  
-
-rails (~> 5.2.4, >= 5.2.4.1)
+ruby 2.5.7p206  
 
 ### デプロイ
 AWS, EC2, RDS
