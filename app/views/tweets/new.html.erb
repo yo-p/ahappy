@@ -1,7 +1,7 @@
 <div class = "container">
     <div class = "row" >
         <% if @tweet.errors.any? %>
-            <h3><%= @tweet.errors.count %>箇所空欄があります</h3>
+            <h3><%= @tweet.errors.count %>箇所エラーがあります</h3>
             <ul>
                 <% @tweet.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
