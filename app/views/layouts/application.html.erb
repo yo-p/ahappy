@@ -33,12 +33,15 @@
           </li>
           <li><%= link_to '投稿一覧', tweets_path %></li>
           <li><%= link_to '新規投稿', new_tweet_path %></li>
-          <li>
-              <% if unchecked_notices.any? %>
-                <i class="fa fa-circle" style="color: red;"></i>
+          <li>  
+              <%= link_to notices_path do %>
+                <% if unchecked_notices.any? %>
+                  <%= fa_icon("circle", text: "通知") %>
+                <% else %>
+                  <%= "通知" %>
+                <% end %>
               <% end %>
           </li>
-          <li><%= link_to '通知', notices_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'サインアップ', new_user_registration_path %></li>
