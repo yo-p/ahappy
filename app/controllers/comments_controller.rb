@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(id: params[:id], tweet_id: params[:id])
+    @comment = Comment.find_by(id: params[:id])
     @comment.destroy
   end
 
