@@ -59,7 +59,7 @@ class TweetsController < ApplicationController
   end
 
   def tweet_params
-    params.require(:tweet).permit(:title, :body, :image, { genre_ids: [] })
     # genre_ids: [] チェックボックスによって複数渡される場合があるのため配列形式
+    params.require(:tweet).permit(:title, :body, :image, { genre_ids: [] })
   end
 end
