@@ -1,38 +1,38 @@
 <div class = "container">
-    <div class = "row" >
-        <% if @tweet.errors.any? %>
-            <h3><%= @tweet.errors.count %>箇所エラーがあります</h3>
-            <ul>
-                <% @tweet.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-                <% end %>
-            </ul>
-        <% end %>
-        <h1>新規投稿</h1>
-            <%= form_for @tweet do |f| %>
-                <table>
-                    <tr>
-                        <th width="80"height="100"><%= f.label :サムネ %></th>
-                        <td><%= f.attachment_field :image %></td>
-                    </tr>
-                    <tr>
-                        <th width="80"height="100"><%= f.label :タイトル %></th>
-                        <td><%= f.text_field :title %></td>
-                    </tr>
-                    <tr>
-                        <th width="80"height="100"><%= f.label :感想 %></th>
-                        <td><%= f.text_area :body, :size=>"60x3"%></td>
-                    </tr>
-                    <tr>
-                        <th width="80"height="100"><%= f.label :ジャンル %></th>
-                        <td>
-                            <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :type) do |b| %>
-                                <%= b.label {b.check_box + b.text} %>
-                            <% end %>
-                        </td>
-                    </tr>
-                </table>
-                <%= f.submit '投稿する', class:"btn btn-info" %>
+  <div class = "row" >
+    <% if @tweet.errors.any? %>
+      <h3><%= @tweet.errors.count %>箇所エラーがあります</h3>
+          <ul>
+            <% @tweet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
             <% end %>
-    </div>
+          </ul>
+    <% end %>
+    <h1>新規投稿</h1>
+      <%= form_for @tweet do |f| %>
+        <table>
+          <tr>
+            <th width="80"height="100"><%= f.label :サムネ %></th>
+            <td><%= f.attachment_field :image %></td>
+          </tr>
+          <tr>
+            <th width="80"height="100"><%= f.label :タイトル %></th>
+            <td><%= f.text_field :title %></td>
+          </tr>
+          <tr>
+            <th width="80"height="100"><%= f.label :感想 %></th>
+            <td><%= f.text_area :body, :size=>"60x3"%></td>
+          </tr>
+          <tr>
+            <th width="80"height="100"><%= f.label :ジャンル %></th>
+            <td>
+              <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :type) do |b| %>
+                <%= b.label {b.check_box + b.text} %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      <%= f.submit '投稿する', class:"btn btn-info" %>
+      <% end %>
+  </div>
 </div>

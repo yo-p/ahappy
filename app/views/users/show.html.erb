@@ -1,51 +1,51 @@
 <div class = "container">
-    <% if flash[:notice] %>
-        <%= flash[:notice] %>
-    <% end %>
-    <div class = "row">
-        <div class = "col-xs-2">
-            <%= render 'users/user_info' %>
-        </div>
-        <div class = 'col-xs-10' >
-            <table class = "table table-hover" >
-                <thead>
-                    <tr>
-                        <th>サムネ</th>
-                        <th>ジャンル</th>
-                        <th>タイトル</th>
-                        <th>コメント数</th>
-                        <th>お気に入り数</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                <% @tweets.each do |tweet| %>
-                    <tr>
-                        <td>
-                            <%= link_to tweet_path(tweet) do %>
-                                <%= attachment_image_tag tweet, :image, size: "50x50",format:"jpeg",fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %>
-                            <% end %>
-                        </td>
-                        <td>
-                            <% tweet.genres.each do |genre| %>
-                                <%= genre.type %>
-                                <br>
-                            <% end %>
-                        </td>
-                        <td><%= link_to tweet.title, tweet %></td>
-                        <td><%= fa_icon("comments",text: tweet.comments.count) %></td>
-                        <td><%= fa_icon("heart",text: tweet.favorites.count) %></td>
-                        <td>
-                            <% if tweet.user_id == current_user.id %>
-                                <%= link_to '削除', tweet, method: :delete, class: "btn btn-danger" %>
-                            <% end %>
-                        </td>
-                    </tr>
-                <% end %>
-                </tbody>
-            </table>
-            <%= paginate @tweets %>
-        </div>
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+  <div class = "row">
+    <div class = "col-xs-2">
+      <%= render 'users/user_info' %>
     </div>
+    <div class = 'col-xs-10' >
+      <table class = "table table-hover" >
+        <thead>
+          <tr>
+            <th>サムネ</th>
+            <th>ジャンル</th>
+            <th>タイトル</th>
+            <th>コメント数</th>
+            <th>お気に入り数</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tweets.each do |tweet| %>
+          <tr>
+            <td>
+              <%= link_to tweet_path(tweet) do %>
+                <%= attachment_image_tag tweet, :image, size: "50x50",format:"jpeg",fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %>
+              <% end %>
+            </td>
+            <td>
+              <% tweet.genres.each do |genre| %>
+                <%= genre.type %>
+                <br>
+              <% end %>
+            </td>
+            <td><%= link_to tweet.title, tweet %></td>
+            <td><%= fa_icon("comments",text: tweet.comments.count) %></td>
+            <td><%= fa_icon("heart",text: tweet.favorites.count) %></td>
+            <td>
+              <% if tweet.user_id == current_user.id %>
+                <%= link_to '削除', tweet, method: :delete, class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @tweets %>
+    </div>
+  </div>
 </div>
 

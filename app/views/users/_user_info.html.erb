@@ -1,31 +1,32 @@
 <table class="table table-bordered sidebar">
-		<tr>
-			<td><%= attachment_image_tag @user, :profile_image, size: "100x100",format:"jpeg",fallback: "jude-beck-MLizaJbVQIM-unsplash.jpg" %></td>
-		<tr>
-			<th>名前</th>
-		</tr>
-        <tr>
-            <td class="name-area"><%= @user.name %></td>
-        </tr>
-		<tr>
-			<th>自己紹介文</th>
-		</tr>
-        <tr>
-            <td height="150"><%= @user.introduction %></td>
-        </tr>
-        <tr>
-            <td>
-            <%= link_to favorites_index_path(@favorites) do %>
-                <%= fa_icon("heart lg", text: "お気に入り一覧")%>
-            <% end %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <%= link_to edit_user_path do %>
-                    <%= fa_icon("cog lg", text: "プロフィール編集")%>
-                <% end %>
-            </td>
-        </tr>
+  <tr>
+    <td><%= attachment_image_tag @user, :profile_image, size: "100x100",format:"jpeg",fallback: "jude-beck-MLizaJbVQIM-unsplash.jpg" %></td>
+  </tr>
+  <tr>
+    <th>名前</th>
+  </tr>
+  <tr>
+    <td class="name-area"><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>自己紹介文</th>
+  </tr>
+  <tr>
+    <td height="150"><%= @user.introduction %></td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to favorites_index_path(@favorites) do %>
+        <%= fa_icon("heart lg", text: "お気に入り一覧")%>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to edit_user_path do %>
+        <%= fa_icon("cog lg", text: "プロフィール編集")%>
+      <% end %>
+    </td>
+  </tr>
 </table>
 
