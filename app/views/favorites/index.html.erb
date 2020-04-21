@@ -1,34 +1,34 @@
 <div class="container">
-    <div class="row">
-        <h1>お気にり一覧</h1>
-            <table class = "table table-hover">
-                <thead>
-                    <tr>
-                        <th>サムネ</th>
-                        <th>タイトル</th>
-                        <th>ジャンル</th>
-                        <th>投稿者</th>
-                    </tr>
-                </thead>
-                <% @favorites.each do |favorite| %>
-                    <tbody>
-                        <tr>
-                            <td><%= link_to tweet_path(favorite.tweet) do %>
-                                    <%= attachment_image_tag favorite.tweet, :image, size: "50x50", format:"jpeg",fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %>
-                                <% end %>
-                            </td>
-                            <td><%= link_to favorite.tweet.title,(favorite.tweet) %></td>
-                            <td><% favorite.tweet.genres.each do |genre| %>
-                                    <%= genre.type%>
-                                    <br>
-                                <% end %>
-                            </td>
-                            <td><%= link_to favorite.tweet.user.name, (favorite.tweet.user) %></td>
-                        </tr>
-                    </tbody>
+  <div class="row">
+    <h1>お気にり一覧</h1>
+    <table class = "table table-hover">
+      <thead>
+        <tr>
+          <th>サムネ</th>
+          <th>タイトル</th>
+          <th>ジャンル</th>
+          <th>投稿者</th>
+        </tr>
+      </thead>
+      <% @favorites.each do |favorite| %>
+        <tbody>
+          <tr>
+            <td><%= link_to tweet_path(favorite.tweet) do %>
+                  <%= attachment_image_tag favorite.tweet, :image, size: "50x50", format:"jpeg",fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %>
                 <% end %>
-            </table>
-            <%= paginate @favorites %>
-    </div>
+            </td>
+            <td><%= link_to favorite.tweet.title,(favorite.tweet) %></td>
+            <td><% favorite.tweet.genres.each do |genre| %>
+                  <%= genre.type%>
+                  <br>
+                <% end %>
+            </td>
+            <td><%= link_to favorite.tweet.user.name, (favorite.tweet.user) %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    <%= paginate @favorites %>
+  </div>
 </div>
 

@@ -1,16 +1,16 @@
 <div class="container">
-    <div class="row">
-        <h1>通知一覧</h1>
-            <% notices = @notices.where.not(visitor_id: current_user.id) %>
-                <h3>
-                    <%= link_to notice_path(@notices), method: :delete do %>
-                        <%= fa_icon("trash",text: "全件削除")%>
-                    <% end %>
-                </h3>
-                    <% if notices.exists? %>
-                        <%= render notices %>
-                    <% else %>
-                        <h4>通知はありません</h4>
-                    <% end %>
-    </div>
+  <div class="row">
+    <h1>通知一覧</h1>
+      <% notices = @notices.where.not(visitor_id: current_user.id) %>
+      <h3>
+        <%= link_to notice_path(@notices), method: :delete do %>
+          <%= fa_icon("trash",text: "全件削除")%>
+        <% end %>
+      </h3>
+      <% if notices.exists? %>
+        <%= render notices %>
+      <% else %>
+        <h4>通知はありません</h4>
+      <% end %>
+  </div>
 </div>

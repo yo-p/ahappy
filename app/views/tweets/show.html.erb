@@ -1,63 +1,63 @@
 <div class = "container">
-    <div class = 'row'>
-        <% if flash[:notice] %>
-            <%= flash[:notice] %>
-        <% end %>
-        <h1>投稿詳細</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th width="110"height=50>サムネ</th>
-                        <th width="120"height=50>タイトル</th>
-                        <th width="150"height=50>コメント</th>
-                        <th width="110"height=50>名前</th>
-                        <th width="110"height=50>ジャンル</th>
-                        <th width="110"height=50>お気に入り</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><%= attachment_image_tag @tweet, :image, size: "100x100", fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %></td>
-                        <td><%= @tweet.title %></td>
-                        <td><%= @tweet.body %></td>
-                        <td><%= @tweet.user.name %></td>
-                        <td>
-                            <% @tweet.genres.each do |genre| %>
-                                <%= genre.type %>
-                                <br>
-                            <% end %>
-                        </td>
-                        <td id="show_favorite_<%= @tweet.id %>">
-                            <%= render 'favorites/favorite', tweet: @tweet %>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div>
-                <%= form_for [@tweet, @comment], remote: true do |f| %>
-                    <%= f.text_field :content , :size=>"60x3"%>
-                    <%= f.submit 'コメント送信', class:"btn btn-info" %>
-                <% end %>
-            </div>
-            
-            <table class = "table table-hover" >
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>名前</th>
-                        <th>コメント</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="comments_index">
-                    <% @comments.each do |comment| %>
-                        <%= render partial: 'comments/comment', locals: {comment: comment} %>
-                    <% end %>
-                </tbody>
-            </table>
-    </div>
+  <div class = 'row'>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+    <h1>投稿詳細</h1>
+    <table>
+      <thead>
+        <tr>
+          <th width="110"height=50>サムネ</th>
+          <th width="120"height=50>タイトル</th>
+          <th width="150"height=50>コメント</th>
+          <th width="110"height=50>名前</th>
+          <th width="110"height=50>ジャンル</th>
+          <th width="110"height=50>お気に入り</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= attachment_image_tag @tweet, :image, size: "100x100", fallback: "sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg" %></td>
+          <td><%= @tweet.title %></td>
+          <td><%= @tweet.body %></td>
+          <td><%= @tweet.user.name %></td>
+          <td>
+            <% @tweet.genres.each do |genre| %>
+              <%= genre.type %>
+              <br>
+            <% end %>
+          </td>
+          <td id="show_favorite_<%= @tweet.id %>">
+            <%= render 'favorites/favorite', tweet: @tweet %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      <div>
+        <%= form_for [@tweet, @comment], remote: true do |f| %>
+            <%= f.text_field :content , :size=>"60x3"%>
+            <%= f.submit 'コメント送信', class:"btn btn-info" %>
+          <% end %>
+        </div>
+
+    <table class = "table table-hover" >
+      <thead>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>コメント</th>
+          <th></th>
+        </tr>
+      </thead>
+        <tbody id="comments_index">
+          <% @comments.each do |comment| %>
+            <%= render partial: 'comments/comment', locals: {comment: comment} %>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
 </div>
 
 
