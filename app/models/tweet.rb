@@ -54,6 +54,8 @@ class Tweet < ApplicationRecord
     save_notice_comment!(current_user, comment_id, user_id)
   end
 
+  private
+  
   def save_notice_comment!(current_user, comment_id, visited_id)
     notice = current_user.active_notices.new(
       tweet_id: id,
