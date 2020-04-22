@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Tweet < ApplicationRecord
-  default_scope -> { order(created_at: :desc) }
+  scope :recent, -> { order(created_at: :desc) }
 
   validates :title, presence: true
   validates :title, length: { maximum: 20 }
