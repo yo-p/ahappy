@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
   def top; end
 
   def index 
-    @tweets = Tweet.all.page(params[:page])
+    @tweets = Tweet.all.recent.page(params[:page])
     @q = TweetGenre.ransack(params[:q])
     @tweet_genres = @q.result(distinct: true)
   end
@@ -40,7 +40,7 @@ class TweetsController < ApplicationController
 
   def show 
     @tweet = Tweet.find(params[:id])
-    @comments = @tweet.comments
+    @comments = @tweet.comments.recent
     @comment = Comment.new
     @favorite = Favorite.new
   end
